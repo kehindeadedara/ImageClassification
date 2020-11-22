@@ -1,6 +1,5 @@
 from flask import Flask
 from flask_restful import Resource, Api
-
 app = Flask(__name__)
 api = Api(app)
 import random
@@ -10,6 +9,12 @@ def random():
     randomlist = []
     for i in range(0, 10):
         n = np.random.randint(1, 30)
+        randomlist.append(n)
+    return randomlist
+def score():
+    randomlist = []
+    for i in range(0, 10):
+        n = np.random.randint(1, 100)
         randomlist.append(n)
     return randomlist
 
@@ -24,7 +29,13 @@ class Shopvision(Resource):
     def get(self):
         return {'data': random()}
 
+class Scorevision(Resource):
+    def get(self):
+        return {'score': score()}
+
+
 api.add_resource(Shopvision, '/')
+api.add_resource(Scorevision, '/score')
 
 @app.route("/")
 def hello():
