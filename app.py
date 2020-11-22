@@ -27,7 +27,8 @@ class Shopvision(Resource):
         return newdata
 
     def get(self):
-        return {'data': random()}
+        return {'data': random(),'score': score()}
+
 
 class Scorevision(Resource):
     def get(self):
